@@ -3,6 +3,17 @@
 # Features: Validation, Auth, Health, Batch, Async
 # ================================================
 
+# Add this import at the top
+from fastapi.middleware.cors import CORSMiddleware
+
+# Add this RIGHT AFTER app = FastAPI(...)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # allows all origins including GitHub Pages
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 from fastapi import FastAPI, HTTPException, Header, Depends
 from pydantic import BaseModel, field_validator
 from typing import List
